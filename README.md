@@ -1,1 +1,1 @@
-A Dockerfile and image for tortoise-tts, with pinned dependencies so you can be sure things work and don't find yourself in dependency hell.
+A Dockerfile and image for [tortoise-tts](https://github.com/pmbaumgartner/tortoise-tts) with pinned dependencies and pre-installed models.

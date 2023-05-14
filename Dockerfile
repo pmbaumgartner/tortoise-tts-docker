@@ -1,3 +1,7 @@
+LABEL org.opencontainers.image.source=https://github.com/pmbaumgartner/tortoise-tts-docker
+LABEL org.opencontainers.image.description="A Docker image for tortoise TTS with pinned dependencies and pre-installed models."
+LABEL org.opencontainers.image.licenses=Apache-2.0
+
 FROM nvidia/cuda:11.3.1-base-ubuntu20.04
 
 ENV PYTHON_VERSION=3.8
