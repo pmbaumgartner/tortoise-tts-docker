@@ -38,9 +38,9 @@ RUN chown -R $USER_UID:$USER_GID /app
 
 USER $USERNAME
 
-RUN pip install --upgrade pip
+RUN pip install --upgrade --user pip 
 
-RUN pip install --no-cache-dir torch==1.12.1+cu113 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu113
+RUN pip install --user --no-cache-dir torch==1.12.1+cu113 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu113
 
 RUN chmod 777 .
 
@@ -51,8 +51,8 @@ WORKDIR tortoise-tts
 # This is important for a specific version of code AND so that docker doesn't cache the repo
 RUN git fetch && git checkout 7a7b4a7
 
-RUN pip install --no-cache-dir -r requirements.txt 
-RUN python setup.py install
+RUN pip install --user --no-cache-dir -r requirements.txt 
+RUN python setup.py install --user
 
 RUN mkdir /results && chmod 777 /results && mkdir results && ln -s -f /app/tortoise-tts/results /results
 RUN mkdir /voices && chmod 777 /voices && /app/tortoise-tts/tortoise/voices /voices
