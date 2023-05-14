@@ -54,8 +54,8 @@ RUN git fetch && git checkout 7a7b4a7
 RUN pip install --user --no-cache-dir -r requirements.txt 
 RUN python setup.py install --user
 
-RUN mkdir /results && chmod 777 /results && mkdir results && ln -s -f /app/tortoise-tts/results /results
-RUN mkdir /voices && chmod 777 /voices && /app/tortoise-tts/tortoise/voices /voices
+RUN sudo mkdir /results && sudo chmod 777 /results && mkdir results && ln -s -f /app/tortoise-tts/results /results
+RUN sudo mkdir /voices && sudo chmod 777 /voices && /app/tortoise-tts/tortoise/voices /voices
 
 # Do this to download the models for the first time
 RUN python -c 'from tortoise.api import TextToSpeech; tts = TextToSpeech()'
