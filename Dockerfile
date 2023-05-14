@@ -31,7 +31,7 @@ WORKDIR /app
 # Create the user
 RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
-RUN sudo chown -R tortoise:1000 /app
+RUN sudo chown -R $USER_UID:$USER_GID /app
 
 USER $USERNAME
 
