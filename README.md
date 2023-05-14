@@ -9,8 +9,11 @@ Inside the container `/results` is a symlink to the default output directory (`.
 ```
 docker run -it --rm --gpus all \
   -v $(pwd)/results:/results \
-  ghcr.io/pmbaumgartner/tortoise-tts:latest 
-  python tortoise/do_tts.py --text "I'm going to speak this" --voice tom --preset ultra_fast
+  ghcr.io/pmbaumgartner/tortoise-tts:latest \
+  python tortoise/do_tts.py \
+  --text "I'm going to speak this" \
+  --voice tom \
+  --preset ultra_fast
 ```
 
 **Custom Voice**
@@ -23,8 +26,11 @@ Because this is mounting a local folder and its contents, it will remove the con
 docker run -it --rm --gpus all \
   -v $(pwd)/results:/results \
   -v $(pwd)/voices:/voices \
-  ghcr.io/pmbaumgartner/tortoise-tts:latest 
-  python tortoise/do_tts.py --text "I'm going to speak this" --voice <newvoice> --preset ultra_fast
+  ghcr.io/pmbaumgartner/tortoise-tts:latest \
+  python tortoise/do_tts.py \
+  --text "I'm going to speak this" \
+  --voice <newvoice> \
+  --preset ultra_fast
 ```
 
 **Other Notes**
