@@ -27,16 +27,19 @@ ARG USERNAME=tortoise
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
+WORKDIR /app
 # Create the user
 RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
+RUN sudo chown -R tortoise:1000 /app
+
 USER $USERNAME
 
 RUN pip install --upgrade pip
 
 RUN pip install --no-cache-dir torch==1.12.1+cu113 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu113
 
-WORKDIR app/
+RUN chmod 777 .
 
 RUN git clone --depth=1 https://github.com/pmbaumgartner/tortoise-tts
 
