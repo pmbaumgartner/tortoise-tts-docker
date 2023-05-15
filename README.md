@@ -7,7 +7,7 @@ A Dockerfile and image for [tortoise-tts](https://github.com/pmbaumgartner/torto
 Inside the container `/results` is a symlink to the default output directory (`./results/`). If you change the `--output_path` argument for this function (not shown in example below), you'll need to bind mount to the same folder you specify in that argument.
 
 ```
-docker run -it --rm --gpus all \
+docker run --rm --gpus all \
   -v $(pwd)/results:/results \
   ghcr.io/pmbaumgartner/tortoise-tts:latest \
   python tortoise/do_tts.py \
@@ -23,7 +23,7 @@ If you want to add a custom voice the `/voices` folder is a symlink to the `voic
 Because this is mounting a local folder and its contents, it will remove the contents of the folder that is in the tortoise package, which means none of the default voices are available while you're using a custom voice.
 
 ```
-docker run -it --rm --gpus all \
+docker run --rm --gpus all \
   -v $(pwd)/results:/results \
   -v $(pwd)/voices:/voices \
   ghcr.io/pmbaumgartner/tortoise-tts:latest \
